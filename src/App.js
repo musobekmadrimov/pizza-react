@@ -46,7 +46,7 @@ function App() {
     // }
     JSON.parse(localStorage.getItem('cart')) && setCart(JSON.parse(localStorage.getItem('cart')))
 
-  });
+  }, []);
 
   return (
     <>

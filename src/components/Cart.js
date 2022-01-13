@@ -18,7 +18,7 @@ export default function Cart({ products, changeQuantity }) {
   }, [products]);
 
   const checkout = () => {
-    alert(`Subtotal: $ ${sum.toFixed(2)}`);
+    alert(`Subtotal: $ ${sum.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}`);
   };
 
   return (
@@ -26,7 +26,7 @@ export default function Cart({ products, changeQuantity }) {
       <button className="toggle-btn" onClick={toggleButton}>
         Cart
       </button>
-      <div className={classActive ? "active" : ""}>
+      <div id="shoppingCart" className={classActive ? "active" : ""}>
         <div className="shopping-cart">
           <div className="cartContent">
             <div className="cartList">
@@ -53,11 +53,16 @@ export default function Cart({ products, changeQuantity }) {
               )}
             </div>
             <div className="total">
-                <div className="info">
-                    <p className="totalText">Total</p>
-                    <p className="totalPrice">UZS: {sum.toFixed(2)}</p>
-                </div>
-                <button onClick={checkout} className="purchaseBtn">Purchase</button>
+              <div className="info">
+                <p className="totalText">Total: &nbsp;</p>
+                <p className="totalPrice">
+                  {" "}
+                  {sum.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")} UZS
+                </p>
+              </div>
+              <button onClick={checkout} className="purchaseBtn">
+                Purchase
+              </button>
             </div>
           </div>
         </div>

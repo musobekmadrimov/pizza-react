@@ -6,11 +6,11 @@ export default function CardItem({product, changeQuantity}) {
             <img src={product.url} alt="Card Item" className="cartItemImage" />
             <div className='cartMain'>
                 <div>
-                    <p>{product.title}</p>
-                    <span>UZS: {product.price}</span>
+                    <p className='itemTitle'>{product.title}</p>
+                    <span className='cartPrice'>{product.price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} UZS</span>
                 </div>
                 <div>
-                    <p>Число: <span>{product.quantity}</span></p>
+                    <p className='itemQuantity'>Число: <span>{product.quantity}</span></p>
                     <div>
                         <button className='quantityBtn' onClick={() => changeQuantity(product, '-')}>-</button>
                         <button className='quantityBtn' onClick={() => changeQuantity(product, '+')}>+</button>
