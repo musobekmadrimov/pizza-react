@@ -4,6 +4,7 @@ import Products from "./components/Products";
 import logo from "./components/images/logo.png";
 import filterList from "./components/FilterList";
 import swal from '@sweetalert/with-react/';
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
         <Cart products={cart} changeQuantity={changeQuantity} />
       </div>
       <Products products={products} addToCart={addToCart} />
+      <Footer />
     </>
   );
 }

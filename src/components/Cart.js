@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CardItem from "./CardItem";
+import swal from '@sweetalert/with-react/';
+
 
 export default function Cart({ products, changeQuantity }) {
   const [classActive, setClassActive] = useState(false);
@@ -18,13 +20,17 @@ export default function Cart({ products, changeQuantity }) {
   }, [products]);
 
   const checkout = () => {
-    alert(`Subtotal: $ ${sum.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}`);
+    swal({
+      title: `Общая сумма: ${sum.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")} сум`,
+      icon: "info",
+    });
+    // alert();
   };
 
   return (
     <>
       <button className="toggle-btn" onClick={toggleButton}>
-        Cart
+        Корзинка
       </button>
       <div id="shoppingCart" className={classActive ? "active" : ""}>
         <div className="shopping-cart">
@@ -61,7 +67,7 @@ export default function Cart({ products, changeQuantity }) {
                 </p>
               </div>
               <button onClick={checkout} className="purchaseBtn">
-                Purchase
+                КУПИТЬ
               </button>
             </div>
           </div>

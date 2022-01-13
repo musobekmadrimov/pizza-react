@@ -6,6 +6,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
+}
+
+:root {
+  --red: #c52f3c;
 }
 
 .brand {
@@ -57,13 +62,14 @@
   position: absolute;
   right: 50px;
   top: 20px;
-  background-color: #ff0000;
+  background-color: var(--red);
   cursor: pointer;
   padding: 10px 30px;
   font-size: 2opx;
   border: none;
   color: #fff;
   border-radius: 50px;
+  font-family: "Montserrat", sans-serif;
 }
 
 #shoppingCart {
@@ -171,7 +177,7 @@
   width: 30px;
   height: 30px;
   color: #fff;
-  background-color: #ff0000;
+  background-color: var(--red);
   border-radius: 50px;
   cursor: pointer;
   border: 0;
@@ -200,10 +206,14 @@
 }
 
 .cartList::-webkit-scrollbar-thumb {
-  background-color: #ff0000;
+  background-color: var(--red);
 }
 
 /* CARD */
+
+.products{
+  padding-bottom: 50px;
+}
 
 .card-list {
   display: grid;
@@ -285,6 +295,44 @@
 .cartIcon {
   width: 7%;
   margin-right: 8px;
+}
+
+/* FOOTER */
+
+.footer {
+  padding: 20px;
+  background-color: #0b132b;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 70px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #fcdebe;
+}
+
+.footer:hover {
+  color: #fcdebe;
+}
+
+.footer span.heartIcon {
+  animation: heart-beat 1s ease infinite;
+  margin-left: 3px;
+  position: absolute;
+}
+
+@keyframes heart-beat {
+  from {
+    font-size: 18px;
+  }
+  to {
+    font-size: 16px;
+  }
 }
 
 /* RESPONSIVE SETTINGS */
