@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import Cart from "./components/Cart";
 import Products from "./components/Products";
 import logo from "./components/images/logo.png";
-import filterList from './components/FilterList';
+import filterList from "./components/FilterList";
+import swal from '@sweetalert/with-react/';
+
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -18,8 +20,10 @@ function App() {
     productList[index].quantity++;
     setCart(productList);
     localStorage.setItem("cart", JSON.stringify(productList));
-    alert("Pizza is added!", cart);
-    console.log(index);
+    swal({
+      title: "Пицца добавлено!",
+      icon: "success",
+    });
   };
 
   const changeQuantity = (item, e) => {
@@ -41,11 +45,8 @@ function App() {
 
   useEffect(() => {
     setProducts(filterList([], null));
-    // if(JSON.parse(localStorage.getItem('cart'))){
-    //   setCart(JSON.parse(localStorage.getItem('cart')))
-    // }
-    JSON.parse(localStorage.getItem('cart')) && setCart(JSON.parse(localStorage.getItem('cart')))
-
+    JSON.parse(localStorage.getItem("cart")) &&
+      setCart(JSON.parse(localStorage.getItem("cart")));
   }, []);
 
   return (
